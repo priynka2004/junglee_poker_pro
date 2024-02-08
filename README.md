@@ -1,6 +1,6 @@
 # junglee_poker_pro
 
-A new Flutter project.
+A Junglee Poker Clone
 
 ## Getting Started
 
