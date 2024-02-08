@@ -1,0 +1,3 @@
+enum PokerInfoType{
+  image,video
+}
