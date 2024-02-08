@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:junglee_poker_pro/learn/provider/learn_poker_provider.dart';
 import 'package:junglee_poker_pro/learn/ui/widget/learn_poker_list_row_widget.dart';
-import 'package:junglee_poker_pro/util/color_const.dart';
-import 'package:junglee_poker_pro/util/string_const.dart';
+import 'package:junglee_poker_pro/util/util.dart';
 import 'package:provider/provider.dart';
 
 class LearnPokerScreen extends StatefulWidget {
@@ -98,6 +97,8 @@ class _LearnPokerScreenState extends State<LearnPokerScreen> {
                 ),
                 const SizedBox(height: 20),
                 ListView.builder(
+                  shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: provider.pokerLearnInfoList.length,
                     itemBuilder: (context, index) {
                       return LearnPokerListRowWidget(
