@@ -58,6 +58,6 @@ class LearnPokerListRowWidget extends StatelessWidget {
   }
 
   Widget getVideoWidget(String videoUrl) {
-    return SizedBox();
+    return const SizedBox();
   }
 }

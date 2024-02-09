@@ -7,4 +7,5 @@ class ColorConst {
   static const Color black = Colors.black;
   static const Color primaryColor = Colors.indigoAccent;
   static const Color textColor = Colors.black;
+  static const Color backgroundColor = Colors.transparent;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:junglee_poker_pro/learn/model/poker_learn_info_model.dart';
 import 'package:junglee_poker_pro/learn/provider/learn_poker_provider.dart';
-import 'package:junglee_poker_pro/learn/ui/widget/learn_poker_list_row_widget.dart';
+import 'package:junglee_poker_pro/learn/ui/widget/learn_poker_detail_widget.dart';
 import 'package:junglee_poker_pro/util/util.dart';
 import 'package:provider/provider.dart';
 
@@ -13,105 +14,127 @@ class LearnPokerScreen extends StatefulWidget {
 
 class _LearnPokerScreenState extends State<LearnPokerScreen> {
   bool isNLHESelected = true;
+  late PokerLearnInfo pokerLearnInfo;
   String selectedVideo = StringConst.video1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('LEARN POKER'),
-        backgroundColor: Colors.indigoAccent,
+        title: const Text(StringConst.appBarText),
+        backgroundColor: ColorConst.indigoAccent,
       ),
       body: SingleChildScrollView(
         child: Consumer<LearnPokerProvider>(
           builder: (context, provider, child) {
-            return Column(
-              children: [
-                const CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  radius: 80.0,
-                  child: Icon(
-                    Icons.image_not_supported_outlined,
-                    size: 120.0,
-                    color: Colors.indigoAccent,
-                  ),
-                ),
-                const Divider(),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    buildGameTypeButtons(),
-                    const SizedBox(width: 20),
-                  ],
-                ),
-                const Divider(),
-                buildGameDetails(),
-                const SizedBox(height: 20),
-                const Text(
-                  'WATCH AND LEARN HOW TO PLAY POKER',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                    color: Colors.black,
-                  ),
-                ),
-                const Divider(thickness: 1, color: Colors.black),
-                const CircleAvatar(
-                  backgroundColor: Colors.transparent,
-                  radius: 80.0,
-                  child: Icon(
-                    Icons.video_collection_sharp,
-                    size: 120.0,
-                    color: Colors.indigoAccent,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Watch more video tutorials: ',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 200,
+                    color: Colors.grey,
+                    child: Image.asset(
+                      'assets/images/img.png',
+                      fit: BoxFit.cover,
                     ),
-                    DropdownButton<String>(
-                      value: selectedVideo,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedVideo = newValue!;
-                        });
-                      },
-                      items: <String>[
-                        'Video 1',
-                        'Video 2',
-                        'Video 3',
-                        'Video 4'
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                  ),
+                  const Divider(),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      buildGameTypeButtons(),
+                      const SizedBox(width: 20),
+                    ],
+                  ),
+                  const Divider(),
+                  buildGameDetails(),
+                  const SizedBox(height: 20),
+                  const Text(
+                    StringConst.watchAndLearnHeaderText,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                      color: ColorConst.black,
                     ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                ListView.builder(
-                  shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: provider.pokerLearnInfoList.length,
-                    itemBuilder: (context, index) {
-                      return LearnPokerListRowWidget(
-                        pokerLearnInfo: provider.pokerLearnInfoList[index],
-                      );
-                    })
-              ],
+                  ),
+                  const Divider(thickness: 1, color: ColorConst.black),
+                  Container(
+                      height: 200,
+                      color: Colors.grey,
+                      child: Image.asset(
+                        'assets/images/img.png',
+                        fit: BoxFit.cover,
+                      )),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        StringConst.watchMoreText,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      DropdownButton<String>(
+                        value: selectedVideo,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedVideo = newValue!;
+                          });
+                        },
+                        items: <String>[
+                          StringConst.video1,
+                          StringConst.video2,
+                          StringConst.video3,
+                          StringConst.video4,
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+
+
+                  const LearnPokerDetailWidget(
+                    title: StringConst.objectiveHeaderText,
+                    description: StringConst.objectiveText,
+                    imageUrl: 'assets/images/img.png',
+                  ),
+                  const LearnPokerDetailWidget(
+                    title: StringConst.pokerHandsHeaderText,
+                    description: StringConst.objectiveText,
+                    imageUrl: 'assets/images/img.png',
+                  ),
+                  const LearnPokerDetailWidget(
+                    title: StringConst.introductionHeaderText,
+                    description: StringConst.objectiveText,
+                    imageUrl: 'assets/images/img.png',
+                  ),
+                  const LearnPokerDetailWidget(
+                    title: StringConst.actionHeaderText,
+                    description: StringConst.objectiveText,
+                    imageUrl: 'assets/images/img.png',
+                  ),
+                  const LearnPokerDetailWidget(
+                    title: StringConst.secretStrategiesHeaderText,
+                    description: StringConst.objectiveText,
+                    imageUrl: 'assets/images/img.png',
+                  ),
+                ],
+              ),
             );
           },
         ),
       ),
     );
   }
+
+
 
   Widget buildGameTypeButtons() {
     return Row(
@@ -132,6 +155,9 @@ class _LearnPokerScreenState extends State<LearnPokerScreen> {
         });
       },
       style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(2),
+        ),
         backgroundColor: isSelected ? Colors.white : ColorConst.primaryColor,
       ),
       child: Text(
@@ -147,11 +173,23 @@ class _LearnPokerScreenState extends State<LearnPokerScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          buildDetailRow(Icons.credit_card, 'Hole Cards:', ' 2'),
-          buildDetailRow(Icons.confirmation_num, 'Community Cards:', ' 5'),
-          buildDetailRow(Icons.card_membership, 'Wager Limit:', ' NO Limit'),
-          buildDetailRow(Icons.credit_card, 'Hand Formation:',
-              ' 1 or 2 Hole Cards + 4 or 3\n Community Cards'),
+          buildDetailRow(Icons.play_lesson_sharp, StringConst.holeCardText,
+              StringConst.noText),
+          const SizedBox(
+            height: 16,
+          ),
+          buildDetailRow(Icons.calendar_view_week_rounded,
+              StringConst.communityCardText, StringConst.noCardText),
+          const SizedBox(
+            height: 16,
+          ),
+          buildDetailRow(Icons.radar_outlined, StringConst.wagerLimitText,
+              StringConst.nOLimitText),
+          const SizedBox(
+            height: 16,
+          ),
+          buildDetailRow(Icons.back_hand, StringConst.handFormationText,
+              StringConst.holeCardsText),
         ],
       ),
     );
@@ -160,7 +198,19 @@ class _LearnPokerScreenState extends State<LearnPokerScreen> {
   Widget buildDetailRow(IconData icon, String label, String value) {
     return Row(
       children: [
-        Icon(icon, size: 40.0, color: ColorConst.primaryColor),
+        Container(
+          
+          decoration: BoxDecoration(
+           border: Border.all(color: Colors.blue),
+            shape: BoxShape.circle
+          ),
+          child: Icon(
+            icon,
+            size: 25.0,
+            color: Colors.blue,
+          ),
+        ),
+        const SizedBox(width: 10),
         Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
         Text(value),
       ],
