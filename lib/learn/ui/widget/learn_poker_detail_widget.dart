@@ -19,6 +19,7 @@ class LearnPokerDetailWidget extends StatelessWidget {
         _showDialog(context);
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
