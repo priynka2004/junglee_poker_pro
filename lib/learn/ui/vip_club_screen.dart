@@ -172,3 +172,47 @@ class _VipClubScreenState extends State<VipClubScreen> {
   }
 }
 
+
+// ListView.builder(
+//   shrinkWrap: true,
+//   physics: const NeverScrollableScrollPhysics(),
+//   itemCount: provider.pokerLearnInfoList.length,
+//   itemBuilder: (context, index) {
+//     PokerLearnInfo pokerLearnInfo = provider.pokerLearnInfoList[index];
+//     print(pokerLearnInfo.title);
+//     print(" ${pokerLearnInfo.description}");
+//     print(" ${pokerLearnInfo.imageUrl}");
+//
+//     return Column(
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: [
+//         Text(
+//           pokerLearnInfo.title,
+//           style: const TextStyle(
+//             fontWeight: FontWeight.bold,
+//             fontSize: 16.0,
+//             color: ColorConst.black,
+//           ),
+//         ),
+//         const Divider(),
+//         Text(
+//           pokerLearnInfo.description,
+//           style: const TextStyle(
+//             color: ColorConst.black,
+//           ),
+//         ),
+//         const SizedBox(height: 10),
+//         if (pokerLearnInfo.imageUrl != null)
+//           Container(
+//             height: 200,
+//             color: Colors.grey,
+//             child: Image.asset(
+//               pokerLearnInfo.imageUrl!,
+//               fit: BoxFit.cover,
+//             ),
+//           ),
+//         const SizedBox(height: 16),
+//       ],
+//     );
+//   },
+// ),

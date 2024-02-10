@@ -3,16 +3,20 @@ class StringConst {
   static const String vipText = 'VIP CLUB';
   static const String vipClubTexts = 'What is the VIP Club?';
   static const String nlheButtonText = 'NLHE';
-  static const String holeCardText = 'Hole Cards:';
+  static const String holeCardText = 'Hole Cards';
   static const String bigWinsText = 'Big Wins';
   static const String thrillText = "Thrill's The Game";
   static const String yourCall = "Your Call";
   static const String kingText = "Be the King";
-  static const String communityCardText = 'Community Cards:';
-  static const String wagerLimitText = 'Wager Limit:';
+  static const String communityCardText = 'Community Cards';
+  static const String wagerLimitText = 'Wager Limit';
   static const String nOLimitText = 'NO Limit';
-  static const String handFormationText = 'Hand Formation:';
-  static const String holeCardsText = '1 or 2 Hole Card + 4 or 3\n Community'
+  static const String nOLimitText1 = 'As per the Pot';
+  static const String handFormationText = 'Hand Formation';
+  static const String handFormationText2 = '2 Hole Card\n(Best possible) +3 Community\n Cards';
+  static const String holeCardsText = '1 or 2 Hole Card \n+ 4 or 3 Community'
+      ' Cards';
+  static const String holeCardsText1 = '4 (for PLO 4),5 (for\nPLO 5),6(for PLO 6)'
       ' Cards';
   static const String rewardText = 'Win real cash reward';
   static const String playText = 'Play tournament';
