@@ -6,13 +6,4 @@ class LearnPokerProvider extends ChangeNotifier {
   late PokerLearnInfo pokerLearnInfo;
   bool isNLHESelected = true;
   String selectedVideo = StringConst.video1;
-//List<PokerLearnInfo> pokerLearnInfoList = [];
-//  LearnPokerService learnPokerService;
-
-// LearnPokerProvider(this.learnPokerService);
-
-// void loadPokerLearnData() {
-//   pokerLearnInfoList = learnPokerService.fetchLearnPokerData();
-//   notifyListeners();
-// }
 }

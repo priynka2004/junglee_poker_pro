@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:junglee_poker_pro/learn/provider/learn_poker_provider.dart';
-import 'package:junglee_poker_pro/learn/ui/learn_poker_screen.dart';
 import 'package:junglee_poker_pro/learn/ui/vip_club_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -25,9 +24,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
-
         ),
-        home: const LearnPokerScreen(),
+        home: const VipClubScreen(),
       ),
     );
   }
