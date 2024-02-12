@@ -69,25 +69,19 @@ class _LearnPokerScreenState extends State<LearnPokerScreen>
                   Container(
                     padding: const EdgeInsets.only(top: 4),
                     width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                        color: Colors
-                            .blue), // You can adjust this value according to your needs
+                    decoration: const BoxDecoration(color: Colors.indigoAccent),
                     child: TabBar(
                       controller: _tabController,
-                      // // Enable scrolling for tabs
                       labelPadding: EdgeInsets.zero,
-                      // Remove default padding
                       tabs: [
                         SizedBox(
-                          width: MediaQuery.of(context).size.width /
-                              2.2, // Set width to half of screen
+                          width: MediaQuery.of(context).size.width / 2.2,
                           child: const Tab(
                             text: StringConst.nlheButtonText,
                           ),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width /
-                              2.2, // Set width to half of screen
+                          width: MediaQuery.of(context).size.width / 2.2,
                           child: const Tab(
                             text: StringConst.ploButtonText,
                           ),
@@ -113,34 +107,85 @@ class _LearnPokerScreenState extends State<LearnPokerScreen>
                     ),
                   ),
                   buildGameDetails(),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      StringConst.watchAndLearnHeaderText,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const Divider(
+                    color: ColorConst.black,
+                  ),
+                  Container(
+                    height: 200,
+                    color: Colors.grey,
+                    child: Image.asset(
+                      'assets/images/img.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        StringConst.watchMoreText,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: ColorConst.indigoAccent,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
                       ),
-                      DropdownButton<String>(
-                        value: learnPokerProvider.selectedVideo,
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            learnPokerProvider.selectedVideo = newValue!;
-                          });
-                        },
-                        items: <String>[
-                          StringConst.video1,
-                          StringConst.video2,
-                          StringConst.video3,
-                          StringConst.video4,
-                        ].map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                    ],
+                    ),
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          StringConst.watchMoreText,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: ColorConst.white),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Expanded(
+                            child: DropdownButton<String>(
+                              value: learnPokerProvider.selectedVideo,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  learnPokerProvider.selectedVideo = newValue!;
+                                });
+                              },
+                              items: <String>[
+                                StringConst.video1,
+                                StringConst.video2,
+                                StringConst.video3,
+                                StringConst.video4,
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Visibility(
+                                    visible: learnPokerProvider.selectedVideo !=
+                                        null,
+                                    child: Text(value),
+                                  ),
+                                );
+                              }).toList(),
+                              style: const TextStyle(
+                                color: ColorConst.indigoAccent,
+                              ),
+                              underline: Container(),
+                              icon: const Icon(
+                                Icons.arrow_downward_sharp,
+                                color: ColorConst.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 20),
                   const LearnPokerDetailWidget(
@@ -181,7 +226,6 @@ class _LearnPokerScreenState extends State<LearnPokerScreen>
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           buildDetailRow(
@@ -225,13 +269,19 @@ class _LearnPokerScreenState extends State<LearnPokerScreen>
   Widget buildDetailRow(IconData icon, String label, String value) {
     return Row(
       children: [
-        Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.blue), shape: BoxShape.circle),
-          child: Icon(
-            icon,
-            size: 25.0,
-            color: Colors.blue,
+        SizedBox(
+          width: 35,
+          height: 35,
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.indigoAccent),
+                shape: BoxShape.circle
+            ),
+            child: Icon(
+              icon,
+              size: 25.0,
+              color: Colors.indigoAccent,
+            ),
           ),
         ),
         const SizedBox(width: 10),
@@ -239,7 +289,7 @@ class _LearnPokerScreenState extends State<LearnPokerScreen>
           text: TextSpan(
             style: const TextStyle(
               color: Colors.black,
-              fontSize: 16,
+              fontSize: 14,
             ),
             children: [
               TextSpan(
